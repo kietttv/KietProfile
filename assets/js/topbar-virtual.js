@@ -163,38 +163,38 @@ $(document).ready(function () {
 
 });
 
-$(document).ready(function () {
-  $('#sideel').click(function () {
-    $(this).parents('.config').toggleClass('active');
-  });
+// $(document).ready(function () {
+//   $('#sideel').click(function () {
+//     $(this).parents('.config').toggleClass('active');
+//   });
 
-  $('body').data('bodyClassList', '');
+//   $('body').data('bodyClassList', '');
 
-  $('.color-item').click(function () {
-    var cls = $(this).data('class');
+//   $('.color-item').click(function () {
+//     var cls = $(this).data('class');
 
-    $('body').attr('class', $('body').data('bodyClassList'));
-    $('body').addClass(cls);
-  });
+//     $('body').attr('class', $('body').data('bodyClassList'));
+//     $('body').addClass(cls);
+//   });
 
-  $('#change-page').on('change', function () {
-    var url = $(this).val() + '.html';
+//   $('#change-page').on('change', function () {
+//     var url = $(this).val() + '.html';
 
-    if ($(this).val()) {
-      window.location.assign(url);
-    }
-  });
+//     if ($(this).val()) {
+//       window.location.assign(url);
+//     }
+//   });
 
-  $('[data-animate="scrolling"]').each(function () {
-    var self = $(this);
-    var target = $(this).data('target') ? $(this).data('target') : $(this).attr('href');
+//   $('[data-animate="scrolling"]').each(function () {
+//     var self = $(this);
+//     var target = $(this).data('target') ? $(this).data('target') : $(this).attr('href');
 
-    self.click(function (e) {
-      $('body, html').animate({ scrollTop: $(target).offset().top }, 1000);
-      return false;
-    });
-  });
-});
+//     self.click(function (e) {
+//       $('body, html').animate({ scrollTop: $(target).offset().top }, 1000);
+//       return false;
+//     });
+//   });
+// });
 
 
 /*
@@ -230,8 +230,8 @@ $(document).ready(function () {
 //   counterInit();
 // });
 
-$(document).ready(function(){
-  $("#downloadBtn").click(function() {
+$(document).ready(function () {
+  $("#downloadBtn").click(function () {
     cvPath = '../assets/CV/CV-TruongVanTuanKiet-WebDeveloper.pdf'
     var element = document.createElement('a');
     element.setAttribute('href', cvPath);
@@ -243,7 +243,7 @@ $(document).ready(function(){
   })
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
   $('.vg-contact-form').submit(function (event) {
     event.preventDefault();
 
@@ -262,7 +262,7 @@ $(document).ready(function(){
     postGoogleFrom(data);
   });
 
-  async function postGoogleFrom(data){
+  async function postGoogleFrom(data) {
     const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfbI15LJ2Ob2WJC79XeN9d3NStEa1LAluDAqcUSgCpGiUUAJQ/formResponse';
 
     const postName = 'entry.1733320680';
@@ -276,13 +276,135 @@ $(document).ready(function(){
     formData.append(postSubject, data.email)
     formData.append(postMessage, data.mess)
 
-    try{
+    try {
       await fetch(formUrl, {
         method: 'POST',
         body: formData
       });
-    }catch(e){
+    } catch (e) {
       console.log(e)
     }
   }
+});
+
+$(document).ready(function () {
+  const categories = [
+    {
+      datafilter: '.apps',
+      name: 'Apps'
+    },
+    {
+      datafilter: '.template',
+      name: 'Template'
+    },
+    {
+      datafilter: '.ios',
+      name: 'IOS'
+    },
+    {
+      datafilter: '.graphic',
+      name: 'Graphic'
+    },
+  ];
+  // id="category-list"
+  const categoryList = $('#category-list');
+
+  categories.forEach(category => {
+    const Item = `
+          <button class="btn btn-theme-outline" data-filter="${category.datafilter}">${category.name}</button>
+        `;
+    categoryList.append(Item);
+  });
+});
+
+$(document).ready(function () {
+  const projects = [
+    {
+      id: '1',
+      name: 'Annual University Magazine 1',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+    {
+      id: '2',
+      name: 'Annual University Magazine 2',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+    {
+      id: '3',
+      name: 'Annual University Magazine 3',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+    {
+      id: '4',
+      name: 'Annual University Magazine 3',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+    {
+      id: '5',
+      name: 'Annual University Magazine 3',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+    {
+      id: '6',
+      name: 'Annual University Magazine 3',
+      date: 'Feb 2024 - Apr 2024',
+      course: 'Enterprise Web Software Development',
+      image: 'work-1.jpg',
+      teamSize: '5',
+      techUsed: 'ASP .Net Web API, SQL Server, Angular',
+      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+    },
+  ];
+
+  const projectList = $('#project-list');
+
+  projects.forEach(project => {
+    const projectItem = `
+          <div class="grid-item apps wow zoomIn">
+            <div class="img-place" data-src="#project-${project.id}" data-fancybox data-modal="false">
+              <img src="../assets/img/work/${project.image}" alt="${project.name}">
+              <div class="img-caption">
+                <h5 class="fg-theme">${project.name}</h5>
+                <p>${project.date}</p>
+              </div>
+            </div>
+          </div>
+          <!-- detail -->
+          <div id="project-${project.id}" class="project-details"">
+            <h4>${project.name}</h4>
+            <h5>${project.date}</h5>
+            <img src="../assets/img/work/${project.image}" alt="${project.name}">
+            <p><b>Final course project:</b> ${project.course}</p>
+            <p><b>Team size:</b> ${project.teamSize}</p>
+            <p><b>Technologies used:</b> ${project.techUsed}</p>
+            <p><b>Description:</b> ${project.des}</p>
+          </div>
+        `;
+    projectList.append(projectItem);
+  });
 });

@@ -120,6 +120,10 @@
   border-radius: 40px;
 }
 
+.badge {
+  margin: 10px;
+}
+
 .page-home .floating-button {
   position: absolute;
   bottom: 20px;
@@ -659,4 +663,33 @@
 
 .theme-purple .post-grid .post-category {
   color: #6f42c1;
+}
+
+.project-details {
+  display: none;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+}
+.project-details h4{
+  font-weight: bold;
+  margin: 10px 0;
+  color: #2960f7;
+}
+.project-details h5 {
+  margin: 10px 0;
+  color: #555;
+}
+.project-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.project-details p {
+  margin: 10px 0;
+  color: #555;
 }
