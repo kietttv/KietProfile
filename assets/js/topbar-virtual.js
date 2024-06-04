@@ -1,12 +1,146 @@
+const categories = [
+  {
+    id: '1',
+    datafilter: '*',
+    name: 'All'
+  },
+  {
+    id: '2',
+    datafilter: '.apps',
+    name: 'Apps'
+  },
+  {
+    id: '3',
+    datafilter: '.template',
+    name: 'Template'
+  },
+  {
+    id: '4',
+    datafilter: '.ios',
+    name: 'IOS'
+  },
+  {
+    id: '5',
+    datafilter: '.graphic',
+    name: 'Graphic'
+  },
+];
+// id="category-list"
+const categoryList = $('.filterable-button');
+categories.forEach(category => {
+  var item = `<button class="btn btn-theme-outline" data-filter="${category.datafilter}">${category.name}</button>`;
+  if (category.name == "All") {
+    var item = `<button class="btn btn-theme-outline selected" data-filter="${category.datafilter}">${category.name}</button>`;
+  }
+  categoryList.append(item);
+});
+
+const projects = [
+  {
+    id: '1',
+    name: 'Annual University Magazine 1',
+    category: 'apps',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+  {
+    id: '2',
+    name: 'Annual University Magazine 2',
+    category: 'apps',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+  {
+    id: '3',
+    name: 'Annual University Magazine 3',
+    category: 'apps',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+  {
+    id: '4',
+    name: 'Annual University Magazine 3',
+    category: 'apps',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+  {
+    id: '5',
+    name: 'Annual University Magazine 3',
+    category: 'apps',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+  {
+    id: '6',
+    name: 'Annual University Magazine 3',
+    category: 'ios',
+    date: 'Feb 2024 - Apr 2024',
+    course: 'Enterprise Web Software Development',
+    image: 'work-1.jpg',
+    teamSize: '5',
+    techUsed: 'ASP .Net Web API, SQL Server, Angular',
+    des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
+  },
+];
+
+const projectList = $('#project-list');
+
+projects.reverse().forEach(project => {
+  const projectItem = `
+        <div class="grid-item ${project.category} wow zoomIn">
+          <div class="img-place" data-src="#project-${project.id}" data-fancybox data-modal="false">
+            <img src="../assets/img/work/${project.image}" alt="${project.name}">
+            <div class="img-caption">
+              <h5 class="fg-theme">${project.name}</h5>
+              <p>${project.date}</p>
+            </div>
+          </div>
+        </div>
+        <!-- detail -->
+        <div id="project-${project.id}" class="project-details"">
+          <h4>${project.name}</h4>
+          <h5>${project.date}</h5>
+          <img src="../assets/img/work/${project.image}" alt="${project.name}">
+          <p><b>Final course project:</b> ${project.course}</p>
+          <p><b>Team size:</b> ${project.teamSize}</p>
+          <p><b>Technologies used:</b> ${project.techUsed}</p>
+          <p><b>Description:</b> ${project.des}</p>
+        </div>
+      `;
+  projectList.append(projectItem);
+});
+
 $(function () {
+  // filter items on button click
   var $grid = $('.gridder').isotope({
     itemSelector: '.grid-item',
-    percentPosition: true
+    percentPosition: true,
   });
 
-  // filter items on button click
   $('.filterable-button').on('click', 'button', function () {
     var filterValue = $(this).attr('data-filter');
+    console.log(filterValue);
     $grid.isotope({ filter: filterValue });
   });
 
@@ -285,126 +419,4 @@ $(document).ready(function () {
       console.log(e)
     }
   }
-});
-
-$(document).ready(function () {
-  const categories = [
-    {
-      datafilter: '.apps',
-      name: 'Apps'
-    },
-    {
-      datafilter: '.template',
-      name: 'Template'
-    },
-    {
-      datafilter: '.ios',
-      name: 'IOS'
-    },
-    {
-      datafilter: '.graphic',
-      name: 'Graphic'
-    },
-  ];
-  // id="category-list"
-  const categoryList = $('#category-list');
-
-  categories.forEach(category => {
-    const Item = `
-          <button class="btn btn-theme-outline" data-filter="${category.datafilter}">${category.name}</button>
-        `;
-    categoryList.append(Item);
-  });
-});
-
-$(document).ready(function () {
-  const projects = [
-    {
-      id: '1',
-      name: 'Annual University Magazine 1',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-    {
-      id: '2',
-      name: 'Annual University Magazine 2',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-    {
-      id: '3',
-      name: 'Annual University Magazine 3',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-    {
-      id: '4',
-      name: 'Annual University Magazine 3',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-    {
-      id: '5',
-      name: 'Annual University Magazine 3',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-    {
-      id: '6',
-      name: 'Annual University Magazine 3',
-      date: 'Feb 2024 - Apr 2024',
-      course: 'Enterprise Web Software Development',
-      image: 'work-1.jpg',
-      teamSize: '5',
-      techUsed: 'ASP .Net Web API, SQL Server, Angular',
-      des: 'Developed a backend system for a university magazine, enabling students to submit articles and images, with faculty speci coordinators managing contributions. Implemented user authentication, submission deadlines, email notifications, and statistical analysis and ensured mobile-friendly interface andadministrative controls facilitated the marketing managers oversight with | real contribution downloads and guest access for viewing selected works.'
-    },
-  ];
-
-  const projectList = $('#project-list');
-
-  projects.forEach(project => {
-    const projectItem = `
-          <div class="grid-item apps wow zoomIn">
-            <div class="img-place" data-src="#project-${project.id}" data-fancybox data-modal="false">
-              <img src="../assets/img/work/${project.image}" alt="${project.name}">
-              <div class="img-caption">
-                <h5 class="fg-theme">${project.name}</h5>
-                <p>${project.date}</p>
-              </div>
-            </div>
-          </div>
-          <!-- detail -->
-          <div id="project-${project.id}" class="project-details"">
-            <h4>${project.name}</h4>
-            <h5>${project.date}</h5>
-            <img src="../assets/img/work/${project.image}" alt="${project.name}">
-            <p><b>Final course project:</b> ${project.course}</p>
-            <p><b>Team size:</b> ${project.teamSize}</p>
-            <p><b>Technologies used:</b> ${project.techUsed}</p>
-            <p><b>Description:</b> ${project.des}</p>
-          </div>
-        `;
-    projectList.append(projectItem);
-  });
 });
